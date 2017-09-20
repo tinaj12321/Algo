@@ -1,0 +1,345 @@
+\documentclass{article}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass: \hmwkTitle}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\hmwkTitle}{Homework\ \#1}
+\newcommand{\hmwkDueDate}{September 20, 2017}
+\newcommand{\hmwkClass}{CS 344}
+\newcommand{\hmwkClassTime}{Section \#1}
+\newcommand{\hmwkClassInstructor}{Professor Bahman Kalantari}
+\newcommand{\hmwkAuthorName}{\textbf{Tina Janulis, Caleb Rodriguez, and Ray Zhang}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\setlength\parskip{\baselineskip}
+\begin{document}
+\maketitle
+\pagebreak
+
+\section*{Problem 1}
+\subsection*{In each of the following situations, indicate whether $f=O(g)$, or $f=\Omega(g)$, or both (in which case $f=\Theta(g)$).}
+\begin{enumerate}[label=(\alph*)]
+\item \addtocounter{enumi}{1}$f(n)=n-100$ 
+\\$g(n)=n-200$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+    		When $c_1=1$, $c_2=100$ and $n=300$, $c_1g(n)\leq f(n)\leq c_2g(n)$\\
+            Therefore, $f(n)=\Theta(g(n))$\\
+        \end{tabular}
+    \end{center}
+\item \addtocounter{enumi}{1} $f(n)=100n+$log$n$
+\\ $g(n)=n+($log$n)^2$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c_1=100$, $c_2=200$ and $n=1$, $c_1g(n)\leq f(n)\leq c_2g(n)$\\
+            Therefore, $f(n)=\Theta(g(n))$\\
+        \end{tabular}
+    \end{center}
+\item \addtocounter{enumi}{1} $f(n)=$log$2n$
+\\ $g(n)=$log$3n$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c_1=1$, $c_2=200$ and $n=3$, $c_1g(n)\leq f(n)\leq c_2g(n)$\\
+            Therefore, $f(n)=\Theta(g(n))$\\
+        \end{tabular}
+    \end{center}
+\item \addtocounter{enumi}{1} $f(n)=n^{1.01}$
+\\ $g(n)=n$log$^2n$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c=2$ and $n=3$, $f(n)\leq cg(n)$\\
+            Therefore, $f(n)=\Omega(g(n))$\\
+        \end{tabular}
+    \end{center}
+
+\item \addtocounter{enumi}{1} $f(n)=n^{.01}$
+\\ $g(n)=n$log$^2n$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c=2$ and $n=100$, $f(n)\leq cg(n)$\\
+            Therefore, $f(n)=\Omega(g(n))$\\
+        \end{tabular}
+	\end{center}
+\item \addtocounter{enumi}{1}  $f(n)=n^{.01}$
+\\ $g(n)=n$log$^2n$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c=2$ and $n=30$, $f(n)\leq cg(n)$\\
+            Therefore, $f(n)=\Omega(g(n))$\\
+        \end{tabular}
+	\end{center}
+
+\item \addtocounter{enumi}{1}$f(n)=n2^{n}$
+\\ $g(n)=3^{n}$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c=200$ and $n=1$, $f(n)\leq cg(n)$\\
+            Therefore, $f(n)=\Omega(g(n))$\\
+        \end{tabular}
+	\end{center}
+
+\item \addtocounter{enumi}{1}$f(n)=n!$
+\\ $g(n)=2^n$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	When $c=1$ and $n=200$, $f(n)\leq cg(n)$\\
+            Therefore, $f(n)=\Omega(g(n))$\\
+        \end{tabular}
+	\end{center}
+\item \addtocounter{enumi}{1} $f(n)=\sum_{i=1}^{n} i^{k}$
+\\ $g(n)=n^{k+1}$
+	\begin{center}
+    	\begin{tabular} {c c c c c}
+        	$\sum_{i=1}^{n}=n(n^{k})$\\
+            This could then be translated into $f(n)=n^{k+1}$.\\
+            This is equivalent to $g(n)=n^{k+1}$
+            Therefore, $f(n)=\Theta(g(n))$\\
+        \end{tabular}
+	\end{center}
+\end{enumerate}
+
+\section*{Problem 2}
+\subsection*{Show that, if $c$ is a positive real number, then $g(n)=1+c^1+c^2+...+c^{n}$ is:}
+\begin{enumerate}[label=(\alph*)]
+\item $\Theta(1)$ if $c<1$.
+	\begin{center}
+    	\begin{tabular}{c c c c c}
+        	If $0<c<1$ and its exponent $n$ is increasing, $c^n$ will decrease as $n$ increases.\\
+            Essentially, $ \lim_{x \to 0} g(n)=-\infty$.\\
+            Therefore, 1 is the leading number and $g(n)=\Theta(1)$.\\
+        \end{tabular}
+	\end{center}
+\item $\Theta(n)$ if $c=1$.
+	\begin{center}
+    	\begin{tabular}{c c c c c}
+        	If $c=1$, 1 is being added to itself $n$ times, which translates to\\
+            $\sum_{i=1}^{n} 1^{n}=n$.\\
+            Therefore, n is the leading coefficient and $g(n)=\Theta(n)$.\\
+        \end{tabular}
+	\end{center}
+\item $\Theta(c^n)$ if $c>1$.
+\begin{center}
+	\begin{tabular}{c c c c c}
+    	If $c>1$, $c^n$ will keep increasing until the last $c^n$ which will be the highest number in the series.\\
+        Essentially, $ \lim_{x \to 0} g(n)=\infty$.\\
+        Therefore, $c^n$ is the leading number and $g(n)=\Theta(c^n)$.\\
+	\end{tabular}
+\end{center}
+\end{enumerate}
+\section*{Problem 3}
+\subsection*{The Fibonacci numbers $F_0,F_1,F_2,...,$ are defined by the rule\\
+	\begin{center}
+		\begin{tabular}{c c c c c}
+        $F_0=0,F_1=1,F_{n}=F_{n-1}+F_{n-2}$
+    	\end{tabular}
+	\end{center}
+In this problem we will confirm that this sequence grows exponentially fast and obtain some bounds on its growth.\\}
+\begin{enumerate}[label=(\alph*)]
+	\item After considering the function, say $n=6$. Then, for the basic step we can say:
+    \begin{center}
+		\begin{tabular}{c c c c c}
+        $F_6=F_5+F_4$\\
+        $F_6=5+3$\\
+        $F_6=8$\\
+    	\end{tabular}
+	\end{center}
+    With this in mind, we can prove that $F_n\geq2 ^{0.5n}$ for $n=6$:
+    \begin{center}
+    	\begin{tabular}{c c c c c}
+    	$F_6\geq 2^{0.5(6)}$\\
+        $8\geq 2^3$\\
+        $8\geq 8$ which is true.\\
+    	\end{tabular}
+    \end{center}
+    For the inductive step we can first show that when $n=n+1$:
+    \begin{center}
+    	\begin{tabular}{c c c c c}
+    	$F_{n+1}=F_n+F_{n-1}$
+    	\end{tabular}
+    \end{center}
+    And based on the basic step, we can start proving $F_n\geq2 ^{0.5n}$ inductively:
+    \begin{center}
+    	\begin{tabular} {c c c c c}
+        	$F_n+F_{n-1}$ &$\geq$ &$2^{0.5(n-1)}+2^{0.5n}$\\
+            &$\geq$ &$2^{0.5(n-1)}(\sqrt[]{2}+1)$\\
+            &$\geq$ &$2*2^{0.5(n-1)}$\\
+            &$\geq$ &$2^{0.5n-0.5+1}$\\
+            &$\geq$ &$2^{0.5n+0.5}$\\
+            &$\geq$ &$2^{0.5(n+1)}$\\
+        \end{tabular}
+    \end{center}
+    Based on the given equation, $F_{n}=F_{n-1}+F_{n-2}$, we can conclude that $F_n+F_{n-1}=F{n+1}$.\\
+    We are trying to prove that $F_n \geq2 ^{0.5n}$.\\
+    The inductive proof above can translate to:
+    \begin{center}
+    	\begin{tabular}{c c c c c}
+    	$F_{n+1}$ &$\geq$ &$2^{0.5(n+1)}$\\
+    	\end{tabular}
+    \end{center}
+    Which proves, inductively, that $F_n\geq2 ^{0.5n}$.\\
+	\item By guess and check, you have to select a value for $c$ and $n$ that makes $1\leq 2^{cn}$.\\
+    \begin{center}
+    	\begin{tabular}{c c c c c}
+    	When $c=0.9$ and $n=3$, $2^{cn}=2^{2.7}$.\\
+        With these values for $c$ and $n$, $1\leq2^{2.7}$.\\
+    	\end{tabular}
+    \end{center}
+	\item For \(F_n = \Omega(2^{cm})\), there must be some $k$ where \(F_n \geq k(2^{cn}\) where $k = 2^x$. Therefore,
+    \begin{align}
+    	F_n &= F_{n-1} + F_{n-2} \\
+        F_n &\geq 2^{c(n-1)+x} + 2^{c(n-2)+x} \\
+        F_n &\geq 2^{cn+m}(2^{-c}+2^{-2c})
+  \end{align}
+  since \(F_n \geq 2^{cn+m}\), then it must be true that \(2^{-c}+2^{-2c} \geq 1\) is also true if (3) is to remain true. Solving \(2^{-c}+2^{-2c} = 1\) yields $c \approx 0.694$.
+\end{enumerate}
+\section*{Problem 4}
+\subsection*{ Is there a faster way to compute the nth Fibonacci number than by fib2 (page 13)? One idea involves matrices.We start by writing the equations and  in matrix notation:}
+	\begin{center}
+			$\begin{bmatrix}
+				 F_{1}\\
+				 F_{2}\\
+				 
+			\end{bmatrix}$
+            =
+            $\begin{bmatrix}
+				 0&1\\
+				 1&1\\ 
+			\end{bmatrix}$
+            .
+            $\begin{bmatrix}
+				 F_{0}\\
+				 F_{1}\\ 
+			\end{bmatrix}$
+	\end{center}
+Similarly, 
+\begin{center}
+			$\begin{bmatrix}
+				 F_{1}\\
+				 F_{2}\\
+				 
+			\end{bmatrix}$
+            =
+            $\begin{bmatrix}
+				 0&1\\
+				 1&1\\ 
+			\end{bmatrix}$
+            .
+            $\begin{bmatrix}
+				 F_{0}\\
+				 F_{1}\\ 
+			\end{bmatrix}$
+            $=$
+            $\begin{bmatrix}
+           		 0&1\\
+				 1&1\\
+            \end{bmatrix}^2$
+           .
+           $\begin{bmatrix}
+				 F_{0}\\
+				 F_{1}\\ 
+			\end{bmatrix}$
+	\end{center}
+   and in general,
+   \begin{center}
+   	$\begin{bmatrix}
+				 F_{n}\\
+				 F_{n+1}\\ 
+	\end{bmatrix}$
+    =
+     $\begin{bmatrix}
+           		 0&1\\
+				 1&1\\
+            \end{bmatrix}^n$
+            .
+       $\begin{bmatrix}
+				 F_{0}\\
+				 F_{1}\\ 
+			\end{bmatrix}$     
+   \end{center}
+\begin{enumerate}[label=(\alph*)]
+\item So, in order to compute $F_n$, it suffices to raise this $2\times2$ matrix, call it $X$, to the $n$th power.
+Show that two $2\times2$ matrices can be multiplied using 4 additions and 8 multiplications. But how many matrix multiplications does it take to compute $X_n$?
+\begin{center}
+    Take two $2\times2$ matrices:
+    $A=$
+    $\begin{bmatrix}
+    1&2\\
+    3&4\\
+    \end{bmatrix}$
+    and $B=$
+    $\begin{bmatrix}
+    5&6\\
+    7&8\\
+    \end{bmatrix}$.
+   \end{center}
+   
+   \begin{center}
+   \begin{tabular} {c c c c c}
+    When multiplying these two matrices you wind up with the following matrix:\\
+    \end{tabular}
+    $\begin{bmatrix}
+    1(5)+2(7)&1(6)+2(8)\\
+    3(5)+4(7)&3(6)+4(8)\\
+    \end{bmatrix}$
+    \begin{tabular}{c c c c c}
+    Based on this operation, you can see that for a $n\times n$ matrix \\
+    there are $2n$ additions and $4n$ multiplications.\\
+    Essentially, the amount of multiplications is twice the amount of additions \\
+    and the amount of additions is twice the amount of elements in a row or column for a $n\times n$ matrix.\\
+    \end{tabular}
+    \end{center}
+  
+\item Show that $O$(log$n$) matrix multiplications suffice for computing $X^n$.
+
+Assume that we have to solve \(X^{2n}\) where $n \geq 1$. Then, the following process could occur
+\begin{align}
+	x_i(x_i) = x_i^2 &= X_{1i} \\
+    x_i^4 = X_{1i}(X_{1i}) &= X_{2i} \\
+    x_i^8 = X_{2i}(X_{2i}) &= X_{3i} \\
+    etc.
+  \end{align}
+This process doubles the exponent for each iteration, and in the example above, $X^8$ is done in 3 steps against 8.
+\end{enumerate}
+\end{document}
