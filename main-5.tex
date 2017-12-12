@@ -1,0 +1,170 @@
+\documentclass{article}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass: \hmwkTitle}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\hmwkTitle}{Homework\ \#4}
+\newcommand{\hmwkDueDate}{November 8, 2017}
+\newcommand{\hmwkClass}{CS 344}
+\newcommand{\hmwkClassTime}{Section \#1}
+\newcommand{\hmwkClassInstructor}{Professor Bahman Kalantari}
+\newcommand{\hmwkAuthorName}{\textbf{Tina Janulis (trj31), Caleb Rodriguez (cjr199), and Rui Zhang (rz187)}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\setlength\parskip{\baselineskip}
+\begin{document}
+\maketitle
+\pagebreak
+
+\section*{Problem 1}
+\subsection*{Using shortest path algorithm determine of the following system of inequalities has a feasible solution.}
+$x_4 - x_2 \leq −2$\\
+$x_1 - x_3 \leq 3$\\
+$x_5 - x_4  \leq -4$\\
+$x_3 - x_2 \leq 2$\\
+$x_2 - x_1 \leq 8$\\
+$x_4 - x_3 \leq 1$\\
+$x_1 - x_5 \leq −3$\\
+
+If it has no solution can you change −2 in the first inequality to a number so that the system will be feasible? And what would be the smallest such value to change it to so that the system becomes feasible.
+
+Based on these equations, we can determine the vertices and their distances in the initial graph:\\
+
+\begin{center}
+	\begin{tabular}{c c c c}
+		\textbf{u} &\textbf{$->$} &\textbf{v} &\textbf{d(u,v)}\\
+        $x_1$ &$->$& $x_2$ & 8\\
+        $x_2$ &$->$& $x_3$ & 2\\
+        $x_3$ &$->$& $x_4$ & 1\\
+        $x_2$ &$->$& $x_4$ & -2\\
+        $x_4$ &$->$& $x_5$ & -4\\
+        $x_3$ &$->$& $x_1$ & 3\\
+        $x_5$ &$->$& $x_1$ & -3\\
+	\end{tabular}
+    
+\end{center}
+
+From here, we can use Bellman-Ford to figure out if the system is feasible. Perform $n-1$ iterations of Bellman Ford where $n$ is the number of vertices. In this case, we know that there are 5 vertices $x_1$,$x_2$,$x_3$,$x_4$, and $x_5$. Therefore, we need to perform 4 iterations.\\
+
+\textbf{First Iteration}
+	\begin{center}
+		\begin{tabular}{c c |c c | c c}
+						&		&		&	 &\textbf{Final distances}\\        
+			    $x_1:$&$0$ & $x_1:$&$0$ & $x_1:$&$-1$ \\
+                $x_2:$&$\infty$ & $x_2:$&$8$ & $x_2:$&$8$ \\
+                $x_3:$&$\infty$ & $x_3:$&$10$ & $x_3:$&$10$\\
+                $x_4:$&$\infty$ & $x_4:$&$6$ & $x_4:$&$6$\\
+                $x_5:$&$\infty$ & $x_5:$&$2$ & $x_5:$&$2$\\
+		\end{tabular}
+	\end{center}
+    
+\textbf{Second Iteration}
+	\begin{center}
+		\begin{tabular}{c c |c c}
+						&		&		\textbf{Final distances}\\        
+			    $x_1:$&$-1$ & $x_1:$&$-2$ \\
+                $x_2:$&$8$  & $x_2:$&$7$ \\
+                $x_3:$&$10$  & $x_3:$&$9$\\
+                $x_4:$&$6$  & $x_4:$&$5$\\
+                $x_5:$&$2$  & $x_5:$&$1$\\
+		\end{tabular}
+	\end{center}
+    
+ \textbf{Third Iteration}
+	\begin{center}
+		\begin{tabular}{c c |c c}
+						&		&		\textbf{Final distances}\\        
+			    $x_1:$&$-2$ & $x_1:$&$-3$ \\
+                $x_2:$&$7$  & $x_2:$&$6$ \\
+                $x_3:$&$9$  & $x_3:$&$8$\\
+                $x_4:$&$5$  & $x_4:$&$4$\\
+                $x_5:$&$1$  & $x_5:$&$0$\\
+		\end{tabular}
+	\end{center}
+    
+ \textbf{Fourth Iteration}
+	\begin{center}
+		\begin{tabular}{c c |c c}
+						&		&		\textbf{Final distances}\\        
+			    $x_1:$&$-3$ & $x_1:$&$-4$ \\
+                $x_2:$&$6$  & $x_2:$&$5$ \\
+                $x_3:$&$8$  & $x_3:$&$7$\\
+                $x_4:$&$4$  & $x_4:$&$3$\\
+                $x_5:$&$0$  & $x_5:$&$-1$\\
+		\end{tabular}
+	\end{center}
+ We can conclude that the system is infeasible because there is a negative cycle with edges $x_1$ to $x_2$ to $x_4$ to $x_5$ back to $x_1$. The total sum of these edges is -1, so if we changed the -2 in the first equation to -1 ($x_4-x_2\leq-1$).
+\section*{Problem 2}
+\subsection*{Given 4 matrices, $A_1, . . . , A_4$, where $A_i$
+is $m_{i - 1} × m_i$ matrix, $i = 1, . . . , 4$, with
+$m_0 = 50, m_1 = 10, m_2 = 30, m_3 = 20, m_4 = 100$.
+Compute $c(i, j)$'s by following the matrix chain multiplication algorithm}
+\begin{center}
+\begin{tabular}{c c c}
+	$(A_1$x$A_2)$x$(A_3$x$A_4)$ & $(A_1$x$(A_2$x$A_3))$x$A_4$ & $A_1$x$((A_2$x$A_3)$x$A_4)$\\
+    $A_1$x$A_2$ = 15000 mult. & $A_2$x$A_3$ = 6000 mult. & $A_2$x$A_3$ = 6000\\
+    $A_3$x$A_4$ = 60000 mult. & x$A_1$ = 10000 mult. & x$A_4$ = 20000\\
+    Last combination: 150000 mult. & x$A_4$ = 100000 mult. &x$A_1$ = 50000\\
+    Total: 225000 mult. & Total: 116000 & Total: 76000\\
+    \\
+    & Optimal $C(i,j)$ = 76000
+    
+\end{tabular}
+\end{center}
+    
+	
+\section*{ Problem 3}
+    
+
+		
+
+\end{document}
+
+
